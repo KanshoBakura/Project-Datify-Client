@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Datify</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Search Tracks</h1>
+
+    <div class="form">
+        <form action="/search" method="POST" id="categoryform">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Search">
+        </form>
+
+        <select name="category" id="category" form="categoryform">
+            <option value="id">id</option>
+            <option value="name">name</option>
+            <option value="popularity">popularity</option>
+            <option value="duration_ms">duration_ms</option>
+            <option value="explicit">explicit</option>
+            <option value="artists">artists</option>
+            <option value="id_artists">id_artists</option>
+            <option value="release_date">release_date</option>
+            <option value="danceability">danceability</option>
+            <option value="energy">energy</option>
+            <option value="key">key</option>
+            <option value="loudness">loudness</option>
+            <option value="mode">mode</option>
+            <option value="speechiness">speechiness</option>
+            <option value="acousticness">acousticness</option>
+            <option value="instrumentalness">instrumentalness</option>
+            <option value="liveness">liveness</option>
+            <option value="valence">valence</option>
+            <option value="tempo">tempo</option>
+            <option value="time_signature">time_signature</option>
+        </select>
+    </div>
+
+    <p>
+        <a href="/add"><input type="button" value="Add item to database"></a>
+        <a href="/modify"><input type="button" value="Edit item in database"></a>
+        <a href="/remove"><input type="button" value="Remove item from database"></a>
+        <a href="/reset"><input type="button" value="Reset filters"></a>
+        <a href="/"><input type="button" value="Home"></a>
+    </p>
+    
+
+</div>
+<div class="w3-container">
+    <h1 style="text-align: center;">Data Table</h1>
+    <div style="width: 1200px; overflow-x: auto; margin-left: auto; margin-right: auto; ">
+
+        <table style="border: 1px solid black; margin-left: auto; margin-right: auto; ">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Popularity</th>
+                    <th>Duration_MS</th>
+                    <th>Explicit</th>
+                    <th>Artists</th>
+                    <th>ID_Artists</th>
+                    <th>Release_Date</th>
+                    <th>Danceability</th>
+                    <th>Energy</th>
+                    <th>Key</th>
+                    <th>Loudness</th>
+                    <th>Mode</th>
+                    <th>Speechiness</th>
+                    <th>Acousticness</th>
+                    <th>Instrumentalness</th>
+                    <th>Liveness</th>
+                    <th>Valence</th>
+                    <th>Tempo</th>
+                    <th>Time_Signature</th>
+                </tr>
+            </thead>
+            {% if data != None %}
+            <tbody>
+                {% for element in data %}
+                <tr>
+                    <td>{{element.id}}</td>
+                    <td>{{element.name}}</td>
+                    <td>{{element.popularity}}</td>
+                    <td>{{element.duration_ms}}</td>
+                    <td>{{element.explicit}}</td>
+                    <td>{{element.artists}}</td>
+                    <td>{{element.id_artists}}</td>
+                    <td>{{element.release_date}}</td>
+                    <td>{{element.danceability}}</td>
+                    <td>{{element.energy}}</td>
+                    <td>{{element.key}}</td>
+                    <td>{{element.loudness}}</td>
+                    <td>{{element.mode}}</td>
+                    <td>{{element.speechiness}}</td>
+                    <td>{{element.acousticness}}</td>
+                    <td>{{element.instrumentalness}}</td>
+                    <td>{{element.liveness}}</td>
+                    <td>{{element.valence}}</td>
+                    <td>{{element.tempo}}</td>
+                    <td>{{element.time_signature}}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
